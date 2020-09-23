@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "content-type-converter"
 version = "0.1.0"
-description = ""
+description = "Convert HTTP POST `Content-Type`, for instance from `application/x-www-form-urlencoded` to `application/json`."
 authors = ["Emilien Klein <emilien@klein.st>"]
 license = "MIT"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.8"

@@ -1,4 +1,5 @@
 # Content-Type converter
+Convert HTTP POST `Content-Type`, for instance from `application/x-www-form-urlencoded` to `application/json`.
 
 ## Setup
 ```sh
