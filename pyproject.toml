@@ -15,7 +15,7 @@ classifiers = [
     "Intended Audience :: System Administrators",
     "Operating System :: OS Independent",
     "Topic :: Internet :: Proxy Servers",
-],
+]
 include = [
     "LICENSE",
 ]
