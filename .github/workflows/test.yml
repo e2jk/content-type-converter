@@ -1,6 +1,6 @@
 name: Test
 
-on: 
+on:
   pull_request: {}
   push:
     branches: master
@@ -27,15 +27,3 @@ jobs:
       - run: pipenv run flake8
       - run: pipenv run mypy
       - run: pipenv run pytest --cov --cov-fail-under=100
-
-  docker-image:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Build docker image
-        run: docker build . -t content_type_converter:test
-
-      - name: Smoke test docker image
-        run: |
-          docker run --rm content_type_converter:test 10
