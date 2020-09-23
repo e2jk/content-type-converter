@@ -3,6 +3,7 @@ name = "content-type-converter"
 version = "0.1.0"
 description = ""
 authors = ["Emilien Klein <emilien@klein.st>"]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.8"
