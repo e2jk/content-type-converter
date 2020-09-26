@@ -1,6 +1,5 @@
 [run]
-source = content_type_converter
-omit = content_type_converter/__main__.py
+source = app
 
 [report]
 exclude_lines =

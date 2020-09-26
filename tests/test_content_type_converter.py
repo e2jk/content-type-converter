@@ -1,4 +1,4 @@
-from content_type_converter import __version__
+from app import __version__
 
 
 def test_version():
