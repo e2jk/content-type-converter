@@ -26,7 +26,7 @@ include = [
 [tool.poetry.dependencies]
 python = "^3.6.1"
 flask = "^1.1.2"
-python-dotenv = "^0.14.0"
+python-dotenv = "^0.15.0"
 flask-wtf = "^0.14.3"
 
 [tool.poetry.dev-dependencies]
