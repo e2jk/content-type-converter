@@ -9,6 +9,11 @@ Convert HTTP POST `Content-Type`, for instance from `application/x-www-form-urle
 
 ## Setup
 ```sh
+# Install Python on your computer, then install pipx and Poetry
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+pipx install poetry
+
 # Install dependencies (including development dependencies)
 poetry install
 
@@ -21,6 +26,7 @@ poetry run pre-commit install -t pre-push
 ```sh
 # Optionally activate Flask's Debug mode when developing
 export FLASK_DEBUG=1
+
 # Run the Flask app
 poetry run flask run
 ```
