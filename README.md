@@ -3,6 +3,7 @@ Convert HTTP POST `Content-Type`, for instance from `application/x-www-form-urle
 
 
 [![Test](https://github.com/e2jk/content-type-converter/workflows/Test/badge.svg)](https://github.com/e2jk/content-type-converter/actions?query=workflow%3ATest)
+[![codecov](https://codecov.io/gh/e2jk/content-type-converter/branch/master/graph/badge.svg)](https://codecov.io/gh/e2jk/content-type-converter)
 [![GitHub last commit](https://img.shields.io/github/last-commit/e2jk/content-type-converter.svg)](https://github.com/e2jk/content-type-converter/commits/master)
 [![License](https://img.shields.io/github/license/e2jk/content-type-converter)](../../tree/master/LICENSE)
 

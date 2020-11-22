@@ -26,4 +26,14 @@ jobs:
       - run: poetry run black --check .
       - run: poetry run flake8
       - run: poetry run mypy
-      - run: poetry run pytest --cov --cov-fail-under=100
+      - run: poetry run pytest --cov --cov-fail-under=100 --cov-report=term --cov-report=xml --cov-report=html
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          flags: unittests
+          env_vars: OS,PYTHON
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          verbose: true
