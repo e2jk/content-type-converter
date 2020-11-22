@@ -16,3 +16,11 @@ poetry install
 poetry run pre-commit install -t pre-commit
 poetry run pre-commit install -t pre-push
 ```
+
+## Run the app
+```sh
+# Optionally activate Flask's Debug mode when developing
+export FLASK_DEBUG=1
+# Run the Flask app
+poetry run flask run
+```
