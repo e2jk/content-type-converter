@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta charset="utf-8">
+
+    {% block styles %}
+    {% endblock %}
+
+    <title>{% if title %}{{ title }} - {% endif %}Content-Type converter</title>
+    {% endblock %}
+  </head>
+  <body>
+    {% block content %}
+<main>
+  <div>
+    {# application content needs to be provided in the app_content block #}
+    {% block app_content %}{% endblock %}
+  </div>
+</main>
+    {% endblock %}
+
+    {% block scripts %}
+    <!-- JavaScript by default at the bottom of the body, per https://developers.google.com/apps-script/guides/html/best-practices#load_javascript_last -->
+    {% endblock %}
+  </body>
+</html>

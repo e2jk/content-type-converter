@@ -33,4 +33,5 @@ def test_xwwwformurlencoded2json_root(client):
 
 def test_xwwwformurlencoded2json_dummy(client):
     rv = client.get("/xwwwformurlencoded2json/dummy")
-    assert b"Current profile: dummy" in rv.data
+    assert b"<h1>Invalid profile &#39;dummy&#39;</h1>" in rv.data
+    assert b"This profile does not exist" in rv.data

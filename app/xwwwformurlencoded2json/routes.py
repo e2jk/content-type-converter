@@ -1,4 +1,4 @@
-from flask import current_app
+from flask import current_app, render_template
 
 from app.xwwwformurlencoded2json import bp
 
@@ -13,4 +13,12 @@ def index():
 
 @bp.route("/<profile>", methods=["GET", "POST"])
 def profile(profile):
-    return "Current profile: %s" % profile
+    if profile not in current_app.config["PROFILES"]:
+        # Invalid profile
+        return (
+            render_template(
+                "xwwwformurlencoded2json/invalid.html",
+                title="Invalid profile '%s'" % profile,
+            ),
+            404,
+        )
