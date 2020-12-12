@@ -30,3 +30,13 @@ export FLASK_DEBUG=1
 # Run the Flask app
 poetry run flask run
 ```
+
+## Development info
+```sh
+# Run the test suite
+poetry run pytest --cov --cov-report=term --cov-report=html
+# The output in HTML form can be found in the `htmlcov` folder
+
+# Update dependencies
+poetry update
+```
