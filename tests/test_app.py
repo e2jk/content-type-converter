@@ -55,5 +55,19 @@ def test_xwwwformurlencoded2json_post(client, mocker):
 
 
 def test_xwwwformurlencoded2json_invalid_method(client, mocker):
+    # Testing HEAD
+    # TODO: should actually return GET's headers without body...
     rv = client.head("/xwwwformurlencoded2json/test_profile?hello=world&test=1")
-    assert rv.status_code == 500
+    assert rv.status_code == 501
+    assert b"" == rv.data  # HEAD must have no body
+    # Testing PUT which is defined as allowed method but is not supported yet
+    rv = client.put("/xwwwformurlencoded2json/test_profile?hello=world&test=1")
+    assert rv.status_code == 501
+    assert b"Unsupported method PUT" in rv.data
+    # Test PATCH which is not an allowed method
+    rv = client.patch("/xwwwformurlencoded2json/test_profile?hello=world&test=1")
+    assert rv.status_code == 405
+    assert (
+        b"<title>405 Method Not Allowed</title>\n<h1>Method Not Allowed</h1>\n"
+        b"<p>The method is not allowed for the requested URL.</p>" in rv.data
+    )

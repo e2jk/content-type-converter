@@ -12,8 +12,8 @@ def index():
     return "Please indicate a profile:<br><ul>%s</ul>" % available_profiles
 
 
-@bp.route("/<profile>", defaults={"path": ""}, methods=["GET", "POST"])
-@bp.route("/<profile>/<path:path>", methods=["GET", "POST"])
+@bp.route("/<profile>", defaults={"path": ""}, methods=["GET", "POST", "PUT"])
+@bp.route("/<profile>/<path:path>", methods=["GET", "POST", "PUT"])
 def profile(profile, path):
     if profile not in current_app.config["PROFILES"]:
         # Invalid profile
@@ -37,7 +37,7 @@ def profile(profile, path):
         r = requests.post(url)
     else:
         # TODO: support other HTTP methods
-        return (f"Unsupported method {request.method}", 500)
+        return f"Unsupported method {request.method}", 501
 
     # Edit the content to make relative links go through our proxy
     base_path = f"/xwwwformurlencoded2json/{profile}/"
