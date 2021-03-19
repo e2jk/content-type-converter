@@ -24,17 +24,22 @@ def profile(profile, path):
             ),
             404,
         )
-    base_url = current_app.config["PROFILES"][profile]["base_url"]
+    prof = current_app.config["PROFILES"][profile]
+    base_url = prof["base_url"]
     url = f"{base_url}{path}"
     if request.query_string:
         url += "?%s" % request.query_string.decode("utf-8")
 
+    headers = {}
+    if "header_authorization" in prof:
+        headers["Authorization"] = prof["header_authorization"]
+
     # Perform the request
     if request.method == "GET":
-        r = requests.get(url)
+        r = requests.get(url, headers=headers)
     elif request.method == "POST":
         # TODO: handle POST requests' payload
-        r = requests.post(url)
+        r = requests.post(url, headers=headers)
     else:
         # TODO: support other HTTP methods
         return f"Unsupported method {request.method}", 501

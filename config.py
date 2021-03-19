@@ -10,4 +10,9 @@ class Config(object):
             "aa": 1,
             "bb": 2,
         },
+        "third_profile": {
+            "base_url": "http://localhost:5555",
+            "header_authorization": "key TestingABC",
+            "bb": 2,
+        },
     }

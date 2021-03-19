@@ -27,8 +27,8 @@ def test_xwwwformurlencoded2json_root(client):
     rv = client.get("/xwwwformurlencoded2json/")
     assert (
         b'Please indicate a profile:<br><ul><li><a href="test_profile">'
-        b'test_profile</a></li><li><a href="second_profile">second_profile</a>'
-        b"</li></ul>" in rv.data
+        b'test_profile</a></li><li><a href="second_profile">second_profile</a></li>'
+        b'<li><a href="third_profile">third_profile</a></li></ul>' in rv.data
     )
 
 
@@ -42,7 +42,16 @@ def test_xwwwformurlencoded2json_get(client, mocker):
     mocker.patch("app.xwwwformurlencoded2json.routes.requests.get")
     client.get("/xwwwformurlencoded2json/test_profile?hello=world&test=1")
     app.xwwwformurlencoded2json.routes.requests.get.assert_called_once_with(
-        "http://myhttpheader.com/?hello=world&test=1"
+        "http://myhttpheader.com/?hello=world&test=1", headers={}
+    )
+
+
+def test_xwwwformurlencoded2json_get_header_authorization(client, mocker):
+    mocker.patch("app.xwwwformurlencoded2json.routes.requests.get")
+    client.get("/xwwwformurlencoded2json/third_profile?hello=world&test=1")
+    app.xwwwformurlencoded2json.routes.requests.get.assert_called_once_with(
+        "http://localhost:5555?hello=world&test=1",
+        headers={"Authorization": "key TestingABC"},
     )
 
 
@@ -50,7 +59,16 @@ def test_xwwwformurlencoded2json_post(client, mocker):
     mocker.patch("app.xwwwformurlencoded2json.routes.requests.post")
     client.post("/xwwwformurlencoded2json/test_profile?hello=world&test=1")
     app.xwwwformurlencoded2json.routes.requests.post.assert_called_once_with(
-        "http://myhttpheader.com/?hello=world&test=1"
+        "http://myhttpheader.com/?hello=world&test=1", headers={}
+    )
+
+
+def test_xwwwformurlencoded2json_post_header_authorization(client, mocker):
+    mocker.patch("app.xwwwformurlencoded2json.routes.requests.post")
+    client.post("/xwwwformurlencoded2json/third_profile?hello=world&test=1")
+    app.xwwwformurlencoded2json.routes.requests.post.assert_called_once_with(
+        "http://localhost:5555?hello=world&test=1",
+        headers={"Authorization": "key TestingABC"},
     )
 
 
