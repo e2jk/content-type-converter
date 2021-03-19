@@ -28,7 +28,8 @@ def test_xwwwformurlencoded2json_root(client):
     assert (
         b'Please indicate a profile:<br><ul><li><a href="test_profile">'
         b'test_profile</a></li><li><a href="second_profile">second_profile</a></li>'
-        b'<li><a href="third_profile">third_profile</a></li></ul>' in rv.data
+        b'<li><a href="third_profile">third_profile</a></li>'
+        b'<li><a href="invalid_profile">invalid_profile</a></li></ul>' in rv.data
     )
 
 
@@ -52,6 +53,15 @@ def test_xwwwformurlencoded2json_get_header_authorization(client, mocker):
     app.xwwwformurlencoded2json.routes.requests.get.assert_called_once_with(
         "http://localhost:5555?hello=world&test=1",
         headers={"Authorization": "key TestingABC"},
+    )
+
+
+def test_xwwwformurlencoded2json_get_nonexistent_site(client, mocker):
+    rv = client.get("/xwwwformurlencoded2json/invalid_profile?hello=world&test=1")
+    assert rv.status_code == 504
+    assert (
+        b"Impossible to connect to http://nonexistent.invalid/?hello=world&test=1"
+        in rv.data
     )
 
 

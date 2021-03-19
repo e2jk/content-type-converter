@@ -15,4 +15,5 @@ class Config(object):
             "header_authorization": "key TestingABC",
             "bb": 2,
         },
+        "invalid_profile": {"base_url": "http://nonexistent.invalid/"},
     }

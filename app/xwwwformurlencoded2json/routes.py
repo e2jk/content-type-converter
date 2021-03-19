@@ -35,14 +35,17 @@ def profile(profile, path):
         headers["Authorization"] = prof["header_authorization"]
 
     # Perform the request
-    if request.method == "GET":
-        r = requests.get(url, headers=headers)
-    elif request.method == "POST":
-        # TODO: handle POST requests' payload
-        r = requests.post(url, headers=headers)
-    else:
-        # TODO: support other HTTP methods
-        return f"Unsupported method {request.method}", 501
+    try:
+        if request.method == "GET":
+            r = requests.get(url, headers=headers)
+        elif request.method == "POST":
+            # TODO: handle POST requests' payload
+            r = requests.post(url, headers=headers)
+        else:
+            # TODO: support other HTTP methods
+            return f"Unsupported method {request.method}", 501
+    except requests.ConnectionError:
+        return f"Impossible to connect to {url}", 504
 
     # Edit the content to make relative links go through our proxy
     base_path = f"/xwwwformurlencoded2json/{profile}/"
