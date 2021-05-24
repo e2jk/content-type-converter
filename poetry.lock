@@ -161,7 +161,7 @@ dotenv = ["python-dotenv"]
 
 [[package]]
 name = "flask-wtf"
-version = "0.14.3"
+version = "0.15.0"
 description = "Simple integration of Flask and WTForms."
 category = "main"
 optional = false
@@ -171,6 +171,9 @@ python-versions = "*"
 Flask = "*"
 itsdangerous = "*"
 WTForms = "*"
+
+[package.extras]
+email = ["email-validator"]
 
 [[package]]
 name = "identify"
@@ -600,7 +603,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6.1"
-content-hash = "820e5b2cfb48d52c7c118c0b28cb6c6646c1d96a8c666bfa59a30c187ccef425"
+content-hash = "2374486b20a1062485a2649ea11d1a9bbbc0c5413ebc9bb39c1a25b7f0c7c56b"
 
 [metadata.files]
 appdirs = [
@@ -713,8 +716,8 @@ flask = [
     {file = "Flask-1.1.2.tar.gz", hash = "sha256:4efa1ae2d7c9865af48986de8aeb8504bf32c7f3d6fdc9353d34b21f4b127060"},
 ]
 flask-wtf = [
-    {file = "Flask-WTF-0.14.3.tar.gz", hash = "sha256:d417e3a0008b5ba583da1763e4db0f55a1269d9dd91dcc3eb3c026d3c5dbd720"},
-    {file = "Flask_WTF-0.14.3-py2.py3-none-any.whl", hash = "sha256:57b3faf6fe5d6168bda0c36b0df1d05770f8e205e18332d0376ddb954d17aef2"},
+    {file = "Flask-WTF-0.15.0.tar.gz", hash = "sha256:0e0b8b33ff457ace4983d25a940133efb9be22922d19452f43a5183e862b9a73"},
+    {file = "Flask_WTF-0.15.0-py2.py3-none-any.whl", hash = "sha256:2ef896e87f458d2ea2908853650fdc939d8c1fde064e992b84bad860fd1e6c04"},
 ]
 identify = [
     {file = "identify-2.1.4-py2.py3-none-any.whl", hash = "sha256:99d40094d8c9fc0b88b379200ecb4f8345a593878656867fa5363abc850766ab"},
